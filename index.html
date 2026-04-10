@@ -386,7 +386,7 @@ function pdfUrl(n){return pdfBase+encodeURIComponent("第"+n+"期週戰報.pdf")
 function renderCards(filter){
   const grid=document.getElementById("cardGrid");
   grid.innerHTML="";
-  const list=filter==="all"?issues:issues.filter(i=>i.cat===filter);
+  const list=(filter==="all"?issues:issues.filter(i=>i.cat===filter)).sort((a,b)=>b.n-a.n);
   var rc=document.getElementById("resultCount"); if(rc) rc.textContent=list.length;
   list.forEach(i=>{
     const p=phases[i.phase];
